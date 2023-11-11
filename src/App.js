@@ -1,24 +1,39 @@
 
 import './App.css';
-import { Container,Flex } from '@chakra-ui/react';
-import YourDetails from './components/YourDetails';
-import Cart from './components/Cart';
+import {BrowserRouter as Router, Route,Routes} from "react-router-dom"
+import Home from './pages/Home';
+import PostPage from './pages/PostPage';
+import CartPAge from './pages/CartPAge';
+import ErrorPage from './pages/ErrorPage';
+import Navbar from './components/Navigation/Navbar';
+import Footer from './components/Navigation/Footer';
 
 function App() {
   return (
-   <Container maxW={"container.xl"} padding={"10"}>
-<Flex h={{base:"auto",md:"100vh"}} py={["0","10","20"]}
-direction={{
-  base: "column-reverse",
-  md:"row"
-}}
+<>
+<Router>
+  <Navbar/>
+<Routes>
+<Route path='/' index element={<Home/>}/>
+<Route path='/post' element={<PostPage/>}/>
+<Route path='/cart' element={<CartPAge/>}/>
+<Route path='*' element={<ErrorPage/>}/>
 
->
- <YourDetails/>
-<Cart/>
- 
-</Flex>
-   </Container>
+
+
+
+
+
+
+
+
+
+
+
+</Routes>
+<Footer/>
+</Router>
+</>
   );
 }
 
